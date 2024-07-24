@@ -6,11 +6,23 @@ while len(word) != 5:
     if len(word) != 5:
         print("The word needs to contain exactly 5 chars")
 
+
+def calculate_score(target, guess):
+    score = ""
+    for i, s in enumerate(guess):
+        if list(word)[i] == s:
+            score = score + "2"
+        elif s in word:
+            score = score + "1"
+        else:
+            score = score + "0"
+    return score
+
+
 word = word.upper()
-
 attempts = 0
-
 guess = ""
+
 while word != guess:
     guess = input("Introduce guess: ")
     if len(guess) != 5:
@@ -19,14 +31,7 @@ while word != guess:
     guess = guess.upper()
     attempts += 1
     if word != guess:
-        score = ""
-        for i, s in enumerate(guess):
-            if list(word)[i] == s:
-                score = score + "2"
-            elif s in word:
-                score = score + "1"
-            else:
-                score = score + "0"
+        score = calculate_score(word, guess)
         print(f"                 {score}")
 
 
