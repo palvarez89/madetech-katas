@@ -1,3 +1,5 @@
+https://learn.madetech.com/technology/katas/wordle/
+
 # Wordle
 
 Create a program, which, given a 5 character string as a target word, and a 5 character string as a guess, return a 5 character string where:
