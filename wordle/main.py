@@ -7,7 +7,6 @@ while len(word) != 5:
         print("The word needs to contain exactly 5 chars")
 
 word = word.upper()
-print(word)
 
 attempts = 0
 
@@ -18,6 +17,17 @@ while word != guess:
         print("Guess needs to be exactly 5 chars long.")
         continue
     guess = guess.upper()
+    attempts += 1
+    if word != guess:
+        score = ""
+        for i, s in enumerate(guess):
+            if list(word)[i] == s:
+                score = score + "2"
+            elif s in word:
+                score = score + "1"
+            else:
+                score = score + "0"
+        print(f"                 {score}")
 
 
-print("You guessed it!!")
+print(f"You guessed it after {attempts} attempt(s)")
