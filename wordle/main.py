@@ -11,14 +11,24 @@ def set_target():
 
 
 def calculate_score(target, guess):
+
+    internal_score = {}
     score = ""
     for i, s in enumerate(guess):
+        current_score = internal_score.get(s, {})
+        if not current_score:
+            current_score = {"pos_failed": [], "pos_correct": []}
+
         if list(target)[i] == s:
             score = score + "2"
+            current_score["pos_correct"].append(i)
         elif s in target:
             score = score + "1"
+            current_score["pos_failed"].append(i)
         else:
             score = score + "0"
+        internal_score[s] = current_score
+        print(internal_score)
     return score
 
 
