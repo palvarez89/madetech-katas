@@ -19,8 +19,24 @@ def calculate_score(target, guess):
         if not current_score:
             current_score = {"pos_failed": [], "pos_correct": []}
 
+        count_in_target = target.count(s)
+        print(f"count for {s} is {count_in_target}")
+
         if list(target)[i] == s:
             score = score + "2"
+            if (
+                len(current_score["pos_correct"]) + len(current_score["pos_failed"])
+                == count_in_target
+            ):
+                print(current_score["pos_failed"])
+                print("going to delete one")
+                del current_score["pos_failed"][-1]
+                print(current_score["pos_failed"])
+            else:
+                print("on else")
+                print(
+                    len(current_score["pos_failed"]) + len(current_score["pos_correct"])
+                )
             current_score["pos_correct"].append(i)
         elif s in target:
             score = score + "1"
